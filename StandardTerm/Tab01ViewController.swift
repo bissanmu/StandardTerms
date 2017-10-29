@@ -17,7 +17,26 @@ class Tab01ViewController: UIViewController, UITableViewDelegate, UITableViewDat
     let keyStr = "6b7943586a73756e38385278646d51"
     var lastPageNum = 0
     
+    @IBOutlet weak var searchView: UIView!
+    
     let searchController = UISearchController(searchResultsController: nil)
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        getData(pageNum:2)
+        super.viewDidLoad()
+        
+        searchController.searchResultsUpdater = self
+        self.searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        searchController.searchBar.sizeToFit()
+        searchController.searchBar.placeholder = "한글명을 입력하세요"
+        //self.edgesForExtendedLayout = UIRectEdge.init(rawValue: 0)
+        //tableView.tableHeaderView = searchController.searchBar
+        searchView.addSubview(searchController.searchBar)
+        print("Total cnt : \(terms.count)")
+    }
     
     func filterContentForSearchText(searchText: String, scope: String = "All"){
         filterTerms = terms.filter{ term in
@@ -36,6 +55,23 @@ class Tab01ViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return terms.count
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if searchController.isActive && searchController.searchBar.text != "" {
+            
+            let alertController = UIAlertController(title: "설명", message: filterTerms[indexPath.row].description , preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "닫기", style: .default, handler: nil)
+            alertController.addAction(defaultAction)
+            present(alertController, animated: true, completion: nil)
+        }else{
+            
+            let alertController = UIAlertController(title: "설명", message: terms[indexPath.row].description, preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "닫기", style: .default, handler: nil)
+            alertController.addAction(defaultAction)
+            present(alertController, animated: true, completion: nil)
+        }
+        
+        
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier01", for: indexPath) as! Tab01TableViewCell
@@ -55,21 +91,7 @@ class Tab01ViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        getData(pageNum:2)
-        super.viewDidLoad()
-        
-        searchController.searchResultsUpdater = self
-        self.searchController.dimsBackgroundDuringPresentation = false
-        definesPresentationContext = true
-        searchController.searchBar.sizeToFit()
-        searchController.searchBar.placeholder = "Search here ..."
-        tableView.tableHeaderView = searchController.searchBar
-        
-        print("Total cnt : \(terms.count)")
-    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

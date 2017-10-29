@@ -48,7 +48,7 @@ class MainTableViewController: UITableViewController {
         self.searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         searchController.searchBar.sizeToFit()
-        searchController.searchBar.placeholder = "Search here ..."
+        searchController.searchBar.placeholder = "한글명을 입력하세요 ..."
         tableView.tableHeaderView = searchController.searchBar
         
         print("Total cnt : \(terms.count)")
