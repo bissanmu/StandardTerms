@@ -13,6 +13,8 @@ class Tab02ViewController: UIViewController, UITableViewDelegate {
     
     @IBOutlet weak var tableView : UITableView!
     var voca = [Voca]()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,7 +23,9 @@ class Tab02ViewController: UIViewController, UITableViewDelegate {
             let voca = try PersistenceService.context.fetch(fetchRequest)
             self.voca = voca
             self.tableView.reloadData()
-        } catch {}
+        } catch {
+            
+        }
         
     }
 
@@ -43,28 +47,30 @@ class Tab02ViewController: UIViewController, UITableViewDelegate {
             textField.placeholder = "영문풀네임"
         }
         let action = UIAlertAction(title : "추가", style : .default){ (_) in
-//            let obj_knm = alert.textFields?.first?.text
-//            let obj_enm = alert.textFields?.last?.text
-//            let eng_full_nm = alert.textFields.
+            
             let obj_knm = alert.textFields![0].text
             let obj_enm = alert.textFields![1].text
             let eng_full_nm = alert.textFields![2].text
             
-            print(obj_knm)
-            print(obj_enm)
-            print(eng_full_nm)
+            //print(obj_knm!)
+            //print(obj_enm!)
+            //print(eng_full_nm!)
             
-            let voca = Voca(context: PersistenceService.context)
-            voca.obj_knm = obj_knm
-            voca.obj_enm = obj_enm
-            voca.eng_full_nm = eng_full_nm
+            let vocabulrary = Voca(context: PersistenceService.context)
+            vocabulrary.obj_knm = obj_knm
+            vocabulrary.obj_enm = obj_enm
+            vocabulrary.eng_full_nm = eng_full_nm
             PersistenceService.saveContext()
-            self.voca.append(voca)
+            self.voca.append(vocabulrary)
             self.tableView.reloadData()
+            
         }
+        let cancel = UIAlertAction(title: "취소", style: UIAlertActionStyle.cancel, handler: nil)
         
         alert.addAction(action)
+        alert.addAction(cancel)
         present(alert, animated: true, completion: nil)
+        
         
     }
 
@@ -86,15 +92,13 @@ extension Tab02ViewController : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("voca count : \(voca.count)")
         return voca.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell  {
-        //let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
+  
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier02", for: indexPath) as! Tab02TableViewCell
-//      cell.textLabel?.text = voca[indexPath.row].obj_knm
-//      cell.detailTextLabel?.text = voca[indexPath.row].obj_enm
+        
         cell.obj_knm.text = voca[indexPath.row].obj_knm
         cell.obj_enm.text = voca[indexPath.row].obj_enm
         cell.eng_full_name.text = voca[indexPath.row].eng_full_nm

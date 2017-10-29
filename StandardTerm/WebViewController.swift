@@ -11,12 +11,14 @@ import UIKit
 class WebViewController: UIViewController {
 
     @IBOutlet weak var myWebView: UIWebView!
+    var urlData:String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
-        let url = URL(string : "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1121&tMenu=11")
+//        let url = URL(string : "http://data.seoul.go.kr/openinf/sheetview.jsp?infId=OA-1121&tMenu=11")
+        let url = URL(string : urlData)
         myWebView.loadRequest(URLRequest(url: url!))
     }
 
