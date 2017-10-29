@@ -46,6 +46,7 @@
 		84845C5A1FA5C13400AB5029 /* Tab02TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab02TableViewCell.swift; sourceTree = "<group>"; };
 		84F3B4201FA5D124006C7762 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		84F3B4221FA5F34F006C7762 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		84F3B4241FA61A00006C7762 /* app_des.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = app_des.gif; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +79,7 @@
 		8445C7A41F9C654F00DAEECF /* StandardTerm */ = {
 			isa = PBXGroup;
 			children = (
+				84F3B4241FA61A00006C7762 /* app_des.gif */,
 				8445C7A51F9C654F00DAEECF /* AppDelegate.swift */,
 				8445C7A91F9C654F00DAEECF /* Main.storyboard */,
 				8445C7AC1F9C654F00DAEECF /* Assets.xcassets */,
