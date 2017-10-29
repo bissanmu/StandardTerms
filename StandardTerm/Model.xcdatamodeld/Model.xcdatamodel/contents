@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13154.30" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Voca" representedClassName="Voca" syncable="YES">
+        <attribute name="eng_full_nm" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="obj_enm" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="obj_knm" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Voca" positionX="-36" positionY="9" width="128" height="90"/>
+    </elements>
+</model>
